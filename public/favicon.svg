@@ -1,10 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
   <defs>
-    <linearGradient id="yg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff2a2a"/>
-      <stop offset="100%" stop-color="#cc0000"/>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#a8a8a8"/>
+      <stop offset="100%" stop-color="#f5f5f5"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4242"/>
+      <stop offset="100%" stop-color="#bd0000"/>
     </linearGradient>
   </defs>
-  <rect width="48" height="48" rx="12" fill="url(#yg)"/>
-  <text x="24" y="35" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="32" fill="white">Y</text>
+  <rect width="48" height="48" rx="10" fill="#050505"/>
+  <path d="M8 35A18 18 0 0 1 24 6" fill="none" stroke="url(#red)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M27 6a18 18 0 0 1 13 27" fill="none" stroke="url(#metal)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M14 36 24 13l10 23-10-7z" fill="url(#metal)" stroke="#fff" stroke-width=".6" stroke-linejoin="round"/>
+  <path d="m24 13 4 15-4-3-4 3z" fill="#151515"/>
+  <path d="m28 30 8 9-4-11z" fill="url(#red)"/>
 </svg>
