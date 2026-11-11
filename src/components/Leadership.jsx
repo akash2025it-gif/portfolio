@@ -24,7 +24,7 @@ const Leadership = () => {
           </p>
         </div>
 
-        {/* Education Cards */}
+        {/* Education Cards: 3 Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
           {educationList.map((edu, idx) => (
             <div
@@ -57,7 +57,7 @@ const Leadership = () => {
           ))}
         </div>
 
-        {/* Part 2: Achievements & Extracurriculars */}
+        {/* Part 2: Achievements Section (Languages Known removed) */}
         <div data-aos="fade-up" className="mb-14 text-center">
           <div className="inline-block border border-white/20 rounded-full px-5 py-1.5 text-xs md:text-sm text-white/70 font-bold mb-4 shadow-sm bg-white/5 backdrop-blur-sm tracking-wider uppercase">
             Honors & Activities
@@ -70,26 +70,29 @@ const Leadership = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* 3 Column Grid for Chess, Scholarships, and Hackathons */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {achievements.map((item, idx) => (
             <div
               key={item.category}
               data-aos="fade-up"
-              data-aos-delay={idx * 100}
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-red-500/40 transition-all duration-500"
+              data-aos-delay={idx * 150}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-red-500/40 hover:bg-white/[0.08] hover:shadow-[0_20px_50px_rgba(255,42,42,0.15)] transition-all duration-500 flex flex-col justify-between"
             >
-              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
-                <span className="text-2xl">{item.icon}</span>
-                <h3 className="text-white text-lg font-black tracking-tight">{item.category}</h3>
+              <div>
+                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
+                  <span className="text-2xl">{item.icon}</span>
+                  <h3 className="text-white text-lg font-black tracking-tight">{item.category}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {item.points.map((pt, pIdx) => (
+                    <li key={pIdx} className="flex items-start gap-2.5 text-sm text-white/80 font-medium leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a2a] mt-2 shrink-0 shadow-[0_0_6px_#ff2a2a]" />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-2.5">
-                {item.points.map((pt, pIdx) => (
-                  <li key={pIdx} className="flex items-start gap-2.5 text-sm text-white/80 font-medium leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a2a] mt-2 shrink-0" />
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>

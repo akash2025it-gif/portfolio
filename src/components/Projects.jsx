@@ -12,80 +12,107 @@ const ExternalLinkIcon = () => (
   </svg>
 );
 
-const ProjectCard = ({ project, aosDelay }) => (
-  <div
-    data-aos="fade-up"
-    data-aos-delay={aosDelay}
-    className="relative rounded-2xl p-[1px] group transition-all duration-500 bg-white/10 hover:bg-white/20 hover:scale-[1.01]"
-  >
-    <div className="rounded-2xl p-6 md:p-8 h-full backdrop-blur-md bg-[#111111]/95 group-hover:bg-[#131313] transition-all duration-500 flex flex-col justify-between">
-      <div>
-        {/* Badge & Number */}
-        <div className="flex items-center justify-between gap-4 mb-4">
-          <span className="inline-block text-[11px] font-bold tracking-widest uppercase text-red-400 bg-red-500/10 px-3.5 py-1 rounded-full border border-red-500/20">
-            {project.badge}
-          </span>
-          <span className="text-4xl font-black text-white/10 font-serif italic">{project.number}</span>
-        </div>
+const ProjectCard = ({ project, aosDelay }) => {
+  const handleOpenDemo = (e) => {
+    e.stopPropagation();
+    if (project.links?.demo) {
+      window.open(project.links.demo, '_blank', 'noopener,noreferrer');
+    }
+  };
 
-        {/* Title */}
-        <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-4 group-hover:text-red-400 transition-colors">
-          {project.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-white/70 text-sm md:text-base leading-relaxed mb-6 font-medium">
-          {project.description}
-        </p>
-
-        {/* Tech Tags */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {project.techTags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 text-xs font-semibold text-white/80 bg-white/5 rounded-full border border-white/10 group-hover:border-red-500/30 group-hover:text-white transition-all duration-300"
-            >
-              {tag}
+  return (
+    <div
+      data-aos="fade-up"
+      data-aos-delay={aosDelay}
+      className="relative rounded-2xl p-[1px] group transition-all duration-500 bg-white/10 hover:bg-white/20 hover:scale-[1.01]"
+    >
+      <div className="rounded-2xl p-6 md:p-8 h-full backdrop-blur-md bg-[#111111]/95 group-hover:bg-[#131313] transition-all duration-500 flex flex-col justify-between">
+        <div>
+          {/* Badge & Number */}
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <span className="inline-block text-[11px] font-bold tracking-widest uppercase text-red-400 bg-red-500/10 px-3.5 py-1 rounded-full border border-red-500/20">
+              {project.badge}
             </span>
-          ))}
+            <span className="text-4xl font-black text-white/10 font-serif italic">{project.number}</span>
+          </div>
+
+          {/* Title (clickable if demo exists) */}
+          {project.links?.demo ? (
+            <a
+              href={project.links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleOpenDemo}
+              className="inline-block group/title mb-4 cursor-pointer"
+            >
+              <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight group-hover/title:text-red-400 transition-colors flex items-center gap-2">
+                {project.title}
+                <span className="text-xs text-red-400 opacity-70 group-hover/title:opacity-100 group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-all">
+                  ↗
+                </span>
+              </h3>
+            </a>
+          ) : (
+            <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-4">
+              {project.title}
+            </h3>
+          )}
+
+          {/* Description */}
+          <p className="text-white/70 text-sm md:text-base leading-relaxed mb-6 font-medium">
+            {project.description}
+          </p>
+
+          {/* Tech Tags */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.techTags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 text-xs font-semibold text-white/80 bg-white/5 rounded-full border border-white/10 group-hover:border-red-500/30 group-hover:text-white transition-all duration-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Action Buttons: Only show valid links (no invented links or broken placeholders) */}
-      <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/5">
-        {project.links?.github && (
-          <a
-            href={project.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs md:text-sm font-semibold hover:bg-white hover:text-black transition-all duration-300"
-          >
-            <GitHubIcon />
-            Source Code
-          </a>
-        )}
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/5 relative z-20">
+          {project.links?.github && (
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs md:text-sm font-semibold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer pointer-events-auto"
+            >
+              <GitHubIcon />
+              Source Code
+            </a>
+          )}
 
-        {project.links?.demo && (
-          <a
-            href={project.links.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ff2a2a] text-white text-xs md:text-sm font-bold hover:bg-red-600 hover:shadow-[0_0_20px_rgba(255,42,42,0.5)] transition-all duration-300 transform hover:scale-105"
-          >
-            <ExternalLinkIcon />
-            Live Demo
-          </a>
-        )}
+          {project.links?.demo && (
+            <a
+              href={project.links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleOpenDemo}
+              className="relative z-30 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ff2a2a] text-white text-xs md:text-sm font-bold hover:bg-red-600 hover:shadow-[0_0_25px_rgba(255,42,42,0.6)] transition-all duration-300 transform hover:scale-105 cursor-pointer pointer-events-auto shadow-md"
+            >
+              <ExternalLinkIcon />
+              Live Demo
+            </a>
+          )}
 
-        {!project.links?.demo && !project.links?.github && (
-          <span className="text-white/40 text-xs font-mono py-1">
-            Internal Production Module · Verified in Internship
-          </span>
-        )}
+          {!project.links?.demo && !project.links?.github && (
+            <span className="text-white/40 text-xs font-mono py-1">
+              Internal Production Module · Verified in Internship
+            </span>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Projects = () => {
   return (
@@ -122,7 +149,7 @@ const Projects = () => {
               href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-white font-bold text-base md:text-lg hover:bg-white hover:text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-500 group"
+              className="flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-white font-bold text-base md:text-lg hover:bg-white hover:text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-500 group cursor-pointer"
             >
               <GitHubIcon />
               Explore All My Repositories on GitHub

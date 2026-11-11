@@ -259,7 +259,7 @@ export const educationList = [
   },
 ];
 
-// Achievements & Extracurricular Data
+// Achievements & Extracurricular Data (Languages Known removed per request)
 export const achievements = [
   {
     category: "Chess Achievements",
@@ -283,11 +283,6 @@ export const achievements = [
     points: [
       "Participated in hackathons, gaining hands-on experience in collaborative technical problem-solving.",
     ],
-  },
-  {
-    category: "Languages Known",
-    icon: "🗣️",
-    points: ["Tamil (Native)", "English (Professional Working Proficiency)"],
   },
 ];
 

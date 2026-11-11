@@ -90,7 +90,7 @@ const Hero = () => {
       )}
 
       {/* Subtle Cinematic Overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/30 z-10 pointer-events-none" />
 
       {/* Left Floating Social Bar for Desktop */}
       {hasSocials && (
@@ -146,16 +146,16 @@ const Hero = () => {
       )}
 
       {/* Content Container */}
-      <div className="absolute inset-0 z-20 px-6 pb-20 md:pb-[8%] md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-end md:justify-between items-start md:items-end text-left w-full">
+      <div className="absolute inset-0 z-20 px-6 pb-16 md:pb-[8%] md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-end md:justify-between items-start md:items-end text-left w-full">
         {/* Left Side: Text and Buttons */}
         <div className="flex flex-col items-start text-left max-w-3xl w-full">
-          {/* Main Heading */}
+          {/* Main Heading — Clean, Solid, High-Contrast Visibility */}
           <h1
             data-aos="fade-up"
-            className="text-white text-3xl md:text-5xl font-bold mb-4 tracking-tight"
+            className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 md:mb-4 tracking-tight leading-tight"
           >
-            {heroContent.greeting}, <br />{' '}
-            <span className="text-transparent [-webkit-text-stroke:1.5px_black]">
+            {heroContent.greeting}, <br className="hidden sm:inline" />
+            <span className="text-white font-black block sm:inline mt-1 sm:mt-0 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
               {heroContent.titleHighlight}
             </span>
           </h1>
@@ -164,7 +164,7 @@ const Hero = () => {
           <p
             data-aos="fade-up"
             data-aos-delay="200"
-            className="text-white/95 text-sm md:text-base lg:text-lg font-semibold mb-6 max-w-2xl leading-relaxed drop-shadow-md border-l-2 border-red-500 pl-4 py-1"
+            className="text-white/95 text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-6 max-w-2xl leading-relaxed drop-shadow-md border-l-2 border-[#ff2a2a] pl-3.5 py-1"
           >
             {heroContent.subtitle}
           </p>
