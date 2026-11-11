@@ -1,49 +1,8 @@
-import { leadershipList } from '../data/portfolioData';
-
-const LeadershipItem = ({ item, index }) => {
-  const isEven = index % 2 === 0;
-
-  return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between mb-12 md:mb-16 w-full group">
-      {/* Timeline line dot */}
-      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-[#ff2a2a] rounded-full border-4 border-black z-30 shadow-[0_0_15px_#ff2a2a] group-hover:scale-125 transition-transform duration-300" />
-
-      {/* Card Content Side */}
-      <div 
-        data-aos={isEven ? "fade-right" : "fade-left"}
-        className={`w-full md:w-[45%] pl-12 md:pl-0 ${
-          isEven ? 'md:text-right md:order-1' : 'md:text-left md:order-2'
-        }`}
-      >
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-red-500/30 hover:shadow-[0_15px_35px_rgba(255,42,42,0.1)] transition-all duration-500">
-          <div className={`flex flex-wrap gap-2 items-center mb-3 ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
-            <span className="bg-[#ff2a2a]/20 text-[#ff2a2a] text-[10px] font-black tracking-widest uppercase py-1 px-3 rounded-full border border-[#ff2a2a]/30">
-              {item.badge}
-            </span>
-          </div>
-          
-          <h3 className="text-white text-xl font-black mb-1 tracking-tight group-hover:text-[#ff2a2a] transition-colors">
-            {item.title}
-          </h3>
-          <p className="text-red-400 text-xs font-bold font-mono tracking-wider uppercase mb-4">
-            {item.role}
-          </p>
-          <p className="text-white/60 text-sm leading-relaxed font-medium">
-            {item.description}
-          </p>
-        </div>
-      </div>
-
-      {/* Spacing spacer for desktop */}
-      <div className="hidden md:block w-[45%] order-2" />
-    </div>
-  );
-};
+import { educationList, achievements } from '../data/portfolioData';
 
 const Leadership = () => {
   return (
-    <section className="bg-[#0a0a0a] pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]">
-      
+    <section id="education" className="bg-[#0a0a0a] pt-28 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]">
       {/* Torn paper divider at top */}
       <div className="absolute top-0 left-0 w-full pointer-events-none z-10 transform -translate-y-[1px] rotate-180">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-12 md:h-20 fill-[#ff2a2a]">
@@ -52,33 +11,88 @@ const Leadership = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-20">
-        
-        {/* Header */}
-        <div data-aos="fade-up" className="mb-20 text-center">
-          <div className="inline-block border border-white/20 rounded-full px-5 py-1.5 text-sm text-white/60 font-bold mb-6 shadow-sm bg-white/5 backdrop-blur-sm">
-            Milestones
+        {/* Part 1: Education Section */}
+        <div data-aos="fade-up" className="mb-14 text-center">
+          <div className="inline-block border border-white/20 rounded-full px-5 py-1.5 text-xs md:text-sm text-white/70 font-bold mb-4 shadow-sm bg-white/5 backdrop-blur-sm tracking-wider uppercase">
+            Academic Background
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4 uppercase">
-            Education & Achievements
+            Education
           </h2>
-          <p className="text-white/50 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
-            Academic foundation at SKCET and competitive sports achievements.
+          <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            Academic qualifications demonstrating consistent scholastic excellence.
           </p>
         </div>
 
-        {/* Timeline container */}
-        <div className="relative w-full">
-          {/* Vertical central line */}
-          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#ff2a2a] via-red-500/50 to-white/10" />
-
-          {/* Timeline Items */}
-          <div className="w-full">
-            {leadershipList.map((item, index) => (
-              <LeadershipItem key={item.title} item={item} index={index} />
-            ))}
-          </div>
+        {/* Education Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+          {educationList.map((edu, idx) => (
+            <div
+              key={edu.level}
+              data-aos="fade-up"
+              data-aos-delay={idx * 150}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-red-500/40 hover:bg-white/[0.08] hover:shadow-[0_20px_50px_rgba(255,42,42,0.15)] transition-all duration-500 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="bg-[#ff2a2a]/20 text-red-400 text-[10px] font-black tracking-widest uppercase py-1 px-3 rounded-full border border-red-500/30">
+                    {edu.badge}
+                  </span>
+                  <span className="text-white/50 text-xs font-mono">{edu.period}</span>
+                </div>
+                <h3 className="text-white text-lg md:text-xl font-black mb-2 tracking-tight">
+                  {edu.level}
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed mb-6 font-medium">
+                  {edu.institution}
+                </p>
+              </div>
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <span className="text-white/50 text-xs uppercase font-bold tracking-wider">Score</span>
+                <span className="text-[#ff2a2a] text-sm md:text-base font-black font-mono bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
+                  {edu.score}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
 
+        {/* Part 2: Achievements & Extracurriculars */}
+        <div data-aos="fade-up" className="mb-14 text-center">
+          <div className="inline-block border border-white/20 rounded-full px-5 py-1.5 text-xs md:text-sm text-white/70 font-bold mb-4 shadow-sm bg-white/5 backdrop-blur-sm tracking-wider uppercase">
+            Honors & Activities
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4 uppercase">
+            Achievements
+          </h2>
+          <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            Competitive sports, prestigious academic scholarships, and technical hackathons.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {achievements.map((item, idx) => (
+            <div
+              key={item.category}
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-red-500/40 transition-all duration-500"
+            >
+              <div className="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
+                <span className="text-2xl">{item.icon}</span>
+                <h3 className="text-white text-lg font-black tracking-tight">{item.category}</h3>
+              </div>
+              <ul className="space-y-2.5">
+                {item.points.map((pt, pIdx) => (
+                  <li key={pIdx} className="flex items-start gap-2.5 text-sm text-white/80 font-medium leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a2a] mt-2 shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
