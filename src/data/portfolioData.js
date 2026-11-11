@@ -9,7 +9,7 @@ export const personalInfo = {
   brandName: "Akash G",
   title: "B.Tech IT Student",
   headline:
-    "B.Tech IT Student | Software Developer | C++ & DSA | Web Development | AI | Hackathons | State-Level Chess Competitor",
+    "Aspiring Software Engineer | Python Full Stack Intern I C++ & DSA | Web Development | Al/ML I Hackathon Enthusiast I State-Level Chess Representative",
   location: "Coimbatore, Tamil Nadu",
   phone: "+91 8248830254",
   emails: {
@@ -33,7 +33,7 @@ export const heroContent = {
   greeting: "Hi, I'm Akash G",
   titleHighlight: "B.Tech IT Student",
   subtitle:
-    "B.Tech IT Student | Software Developer | C++ & DSA | Web Development | AI | Hackathons | State-Level Chess Competitor",
+    "Aspiring Software Engineer | Python Full Stack Intern I C++ & DSA | Web Development | Al/ML I Hackathon Enthusiast I State-Level Chess Representative",
   ctaPrimary: { text: "View My Work", href: "#projects" },
   ctaSecondary: {
     text: "Contact Me",
